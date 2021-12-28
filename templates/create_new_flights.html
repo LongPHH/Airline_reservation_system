@@ -1,0 +1,66 @@
+<html>
+<head>
+</head>
+<body>
+<form action="/create_new_flights_post" method="POST">
+	Airplane ID: <input type="text" name = "airplane_ID" placeholder="airplane_ID" required/> </br>
+	Airline Name: <input type="text" name = "airline_name" placeholder="airline_name" required/></br>
+	Flight Num: <input type="text" name = "flight_num" placeholder="flight_num" required/></br>
+	Base Price: <input type="number" name = "base_price" placeholder="base_price" required/></br>
+	<label for="status">Status:</label>
+  <select name="status" id="status" required>
+    <option value="on-time">On-Time</option>
+    <option value="delayed">Delayed</option>
+  </select>
+  <br>
+	Departure Date Time: <input type="datetime-local" name = "departure_date_time" placeholder="departure_date_time" required/></br>
+	Arrival Date Time: <input type="datetime-local" name = "arrival_date_time" placeholder="arrival_date_time" required/></br>
+	Departure Airport Code: <input type="text" name = "departure_airport_code" placeholder="departure_airport_code" required/></br>
+	Arrival Airport Code: <input type="text" name = "arrival_airport_code" placeholder="arrival_airport_code" required/></br>
+	<input type="submit" value = Submit />
+
+</form>
+
+<a href="/staff_home">Go back</a>
+
+
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Airplane ID</th>
+	<th>Airline Name</th>
+	<th>Flight Num</th>
+	<th>Base Price</th>
+	<th>Status</th>
+	<th>Departure Date Time</th>
+	<th>Arrival Date Time</th>
+	<th>Depart Airport Code</th>
+	<th>Arrival Airport Code</th>
+
+{% for line in posts %}
+	<tr>
+		<td>{{line['airplane_ID']}}</td>
+		<td>{{line['airline_name']}}</td>
+		<td>{{line['flight_num']}}</td>
+		<td>{{line['base_price']}}</td>
+		<td>{{line['status']}}</td>
+		<td>{{line['departure_date_time']}}</td>
+		<td>{{line['arrival_date_time']}}</td>
+		<td>{{line['departure_airport_code']}}</td>
+		<td>{{line['arrival_airport_code']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+{% if show_button %}
+	<a href="/logout">Logout</a>
+{% endif %}
+
+
+</body>
+</html>

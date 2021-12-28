@@ -1,0 +1,35 @@
+<html>
+<h1>Ticket sold in last {{month_num}} month(s):</h1>
+
+{% if data %}
+    <style type="text/css">
+        table, th, td{
+            border: 1px solid black;
+        }
+    </style>
+
+    <table>
+        <th>Month</th>
+        <th>Tickets sold</th>
+
+    {% for line in data %}
+        <tr>
+            <td>{{line['month']}}</td>
+            <td>{{line['tick_total']}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endif %}
+
+<h2>Please enter a range you want to see your ticket sales:</h2>
+<form action="/view_report" method="POST">
+	From: <input type="date" name = "start_date" required/> </br>
+	Until <input type="date" name = "end_date" required/></br>
+	<input type="submit" value = Submit />
+</form>
+
+{% if error %}
+    <p class="error"><strong>Error:</strong> {{error}}</p>
+{% endif %}
+
+</html>

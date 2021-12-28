@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+<body>
+
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+
+
+<table>
+	<th>Past Year Top Destination</th>
+
+{% for line in oneyear %}
+	<tr>
+		<td>{{line['airport_city']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+
+<table>
+		<th>Past 3 Months Top Destination</th>
+	{% for line in posts %}
+	<tr>
+		<td>{{line['airport_city']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<a href="/staff_home"><button> Back </button></a>
+
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>

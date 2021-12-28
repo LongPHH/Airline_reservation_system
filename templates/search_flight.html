@@ -1,0 +1,70 @@
+<html>
+<head>
+</head>
+<body>
+<form action="/search_flight" method="POST">
+	One-way or Return? 
+	<select name="way">
+		<option value="one way">One way</option>
+		<option value="return">Return</option>
+	</select> </br>
+
+	Depart From: <input type="text" name = "depart" placeholder="Enter Airport Code" required/></br>
+	Arrive to: <input type="text" name = "arrive" placeholder="Enter Airport Code" required/></br>
+	Departure Date: <input type="date" name = "departure date" required/></br>
+	Return Date: <input type="date" name = "return date" required/></br>
+	<input type="submit" value = Find />
+
+</form>
+	{% if show %}
+	<html>
+		<style type="text/css">
+			table, th, td{
+				border: 1px solid black;
+			}
+		</style>
+		
+		<table>
+			<th>Plane ID</th>
+			<th>Airline</th>
+			<th>Flight Number</th>
+			<th>Price</th>
+			<th>Status</th>
+	
+		{% for line in flights %}
+			<tr>
+				<td>{{line['airplane_ID']}}</td>
+				<td>{{line['airline_name']}}</td>
+				<td>{{line['flight_num']}}</td>
+				<td>{{line['base_price']}}</td>
+				<td>{{line['status']}}</td>	
+			</tr>
+		{% endfor %}
+		</table>
+	
+	</html>
+	
+	{% endif %}
+
+{% if cust_home %}
+	<a href="/purchase_ticket"><button> Purchase </button></a> 
+	</br>
+	<a href="/customer_home"> Back </a>
+{% else %}
+	</br>
+	</br>
+	<a href="/"> Back  </a> 
+{% endif %}
+
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+
+
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,37 @@
+<html>
+<h1>Your spending in the last {{month_num}} month(s):</h1>
+
+{% if spending %}
+    <style type="text/css">
+        table, th, td{
+            border: 1px solid black;
+        }
+    </style>
+
+    <table>
+        <th>Month</th>
+        <th>Spending</th>
+
+    {% for line in spending %}
+        <tr>
+            <td>{{line['month']}}</td>
+            <td>{{line['month_total']}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endif %}
+<h2>Please enter a range you want to see your spending:</h2>
+<form action="/trackmyspending" method="POST">
+	From: <input type="date" name = "start month" required/> </br>
+	Until <input type="date" name = "end month" required/></br>
+	<input type="submit" value = Submit />
+</form>
+
+</br>
+<a href="/customer_home">Back</a>
+
+{% if error %}
+    <p class="error"><strong>Error:</strong> {{error}}</p>
+{% endif %}
+
+</html>

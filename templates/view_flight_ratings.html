@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+<body>
+
+
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<table>
+	<th>Flight Number</th>
+	<th>Customer Email</th>
+	<th>Rating</th>
+	<th>Comment</th>
+
+
+
+{% for line in posts %}
+	<tr>
+		<td>{{line['flight_num']}}</td>
+		<td>{{line['email']}}</td>
+		<td>{{line['rating']}}</td>
+		<td>{{line['comment']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<a href="/staff_home"><button> Back </button></a>
+
+<a href="/logout">Logout</a>
+
+</body>
+
+
+</html>
