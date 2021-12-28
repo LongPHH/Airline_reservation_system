@@ -1,4 +1,4 @@
-Airline Rervation System.
+# Airline Rervation System.
 Contributor: Long Phi, Tiffany Yan.
 
 Mockup of an airline ticketing system featuring two types of users. Customers and Staff.
